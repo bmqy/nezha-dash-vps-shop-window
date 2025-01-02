@@ -56,11 +56,7 @@ export default function ServerCard({ now, serverInfo }: { now: number; serverInf
       >
         <div className="relative flex flex-col">
           <p className={cn("break-all font-bold tracking-tight", showFlag ? "text-xs " : "text-sm")}>
-            {platform.includes("Windows") ? (
-              <MageMicrosoftWindows className="size-[10px]" />
-            ) : (
-              <span className={`fl-${GetFontLogoClass(platform)} mr-1 text-green-600`} />
-            )}
+            <span className="h-2 w-2 shrink-0 rounded-full bg-green-500 self-center"></span>
             {showFlag ? <VSWServerFlag country_code={country_code} /> : null}
             {name}
           </p>
@@ -157,11 +153,7 @@ export default function ServerCard({ now, serverInfo }: { now: number; serverInf
         })}
         style={{ gridTemplateColumns: "auto auto 1fr" }}
       >
-        {platform.includes("Windows") ? (
-          <MageMicrosoftWindows className="size-[10px]" />
-        ) : (
-          <span className={`fl-${GetFontLogoClass(platform)} mr-1 text-red-600`} />
-        )}
+        <span className="h-2 w-2 shrink-0 rounded-full bg-red-500 self-center"></span>
         <div className={cn("flex items-center justify-center", showFlag ? "min-w-[17px]" : "min-w-0")}>
           {showFlag ? <VSWServerFlag country_code={country_code} /> : null}
         </div>

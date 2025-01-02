@@ -1,7 +1,7 @@
 import VSWServerFlag from "@/components/VSWServerFlag"
 import ServerUsageBar from "@/components/ServerUsageBar"
 import { formatBytes } from "@/lib/format"
-import { GetFontLogoClass, MageMicrosoftWindows } from "@/lib/logo-class"
+import { GetFontLogoClass, GetOsName, MageMicrosoftWindows } from "@/lib/logo-class"
 import { cn, formatNezhaInfo, parsePublicNote } from "@/lib/VSWutils"
 import { NezhaServer } from "@/types/nezha-api"
 import { useTranslation } from "react-i18next"
@@ -42,11 +42,7 @@ export default function ServerCardInline({ now, serverInfo }: { now: number; ser
         <section className={cn("grid items-center gap-2 lg:w-36")} style={{ gridTemplateColumns: "auto auto 1fr" }}>
           <div className="relative w-28 flex flex-col">
             <p className={cn("break-all font-bold tracking-tight", showFlag ? "text-xs " : "text-sm")}>
-              {platform.includes("Windows") ? (
-                <MageMicrosoftWindows className="size-[10px]" />
-              ) : (
-                <span className={`fl-${GetFontLogoClass(platform)} mr-1 text-green-600`} />
-              )}
+              <span className="h-2 w-2 shrink-0 rounded-full bg-green-500 self-center"></span>
               {showFlag ? <VSWServerFlag country_code={country_code} /> : null}
               {name}
             </p>
@@ -56,6 +52,19 @@ export default function ServerCardInline({ now, serverInfo }: { now: number; ser
         <Separator orientation="vertical" className="h-8 mx-0 ml-2" />
         <div className="flex flex-col gap-1">
           <section className={cn("grid grid-cols-9 items-center gap-3 flex-1")}>
+            <div className={"items-center flex flex-row gap-2 whitespace-nowrap"}>
+              <div className="text-xs font-semibold">
+                {platform.includes("Windows") ? (
+                  <MageMicrosoftWindows className="size-[10px]" />
+                ) : (
+                  <p className={`fl-${GetFontLogoClass(platform)}`} />
+                )}
+              </div>
+              <div className={"flex w-14 flex-col"}>
+                <p className="text-xs text-muted-foreground">{t("serverCard.system")}</p>
+                <div className="flex items-center text-[10.5px] font-semibold">{platform.includes("Windows") ? "Windows" : GetOsName(platform)}</div>
+              </div>
+            </div>
             <div className={"flex w-20 flex-col"}>
               <p className="text-xs text-muted-foreground">{t("serverCard.uptime")}</p>
               <div className="flex items-center text-xs font-semibold">
@@ -115,11 +124,7 @@ export default function ServerCardInline({ now, serverInfo }: { now: number; ser
       onClick={() => navigate(`/server/${serverInfo.id}`)}
     >
       <section className={cn("grid items-center gap-2 w-40")} style={{ gridTemplateColumns: "auto auto 1fr" }}>
-        {platform.includes("Windows") ? (
-          <MageMicrosoftWindows className="size-[10px]" />
-        ) : (
-          <span className={`fl-${GetFontLogoClass(platform)} mr-1 text-red-600`} />
-        )}
+        <span className="h-2 w-2 shrink-0 rounded-full bg-red-500 self-center"></span>
         <div className={cn("flex items-center justify-center", showFlag ? "min-w-[17px]" : "min-w-0")}>
           {showFlag ? <VSWServerFlag country_code={country_code} /> : null}
         </div>
