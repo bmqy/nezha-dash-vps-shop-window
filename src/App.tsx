@@ -5,14 +5,14 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 
 import ErrorBoundary from "./components/ErrorBoundary"
 import Footer from "./components/Footer"
-import Header, { RefreshToast } from "./components/Header"
+import VSWHeader, { RefreshToast } from "./components/VSWHeader"
 import { useTheme } from "./hooks/use-theme"
 import { InjectContext } from "./lib/inject"
 import { fetchSetting } from "./lib/nezha-api"
 import { cn } from "./lib/utils"
 import ErrorPage from "./pages/ErrorPage"
 import NotFound from "./pages/NotFound"
-import Server from "./pages/Server"
+import VSWServer from "./pages/VSWServer"
 import ServerDetail from "./pages/ServerDetail"
 
 const App: React.FC = () => {
@@ -93,9 +93,9 @@ const App: React.FC = () => {
         >
           <main className="flex z-20 min-h-[calc(100vh-calc(var(--spacing)*16))] flex-1 flex-col gap-4 p-4 md:p-10 md:pt-8">
             <RefreshToast />
-            <Header />
+            <VSWHeader />
             <Routes>
-              <Route path="/" element={<Server />} />
+              <Route path="/" element={<VSWServer />} />
               <Route path="/server/:id" element={<ServerDetail />} />
               <Route path="/error" element={<ErrorPage />} />
               <Route path="*" element={<NotFound />} />
