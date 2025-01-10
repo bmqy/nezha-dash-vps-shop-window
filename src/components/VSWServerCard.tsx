@@ -135,7 +135,7 @@ export default function ServerCard({ now, serverInfo }: { now: number; serverInf
   ) : (
     <Card
       className={cn(
-        "flex flex-col items-center justify-start gap-3 sm:gap-0 p-3 md:px-5 cursor-pointer hover:bg-accent/50 transition-colors",
+        "flex flex-col items-center justify-start gap-3 sm:gap-0 p-3 md:px-5 cursor-pointer hover:bg-accent/50 transition-colors dark:bg-stone-800 bg-stone-100",
         showNetTransfer ? "lg:min-h-[91px] min-h-[123px]" : "lg:min-h-[61px] min-h-[93px]",
         {
           "flex-col": fixedTopServerName,
@@ -153,12 +153,12 @@ export default function ServerCard({ now, serverInfo }: { now: number; serverInf
         })}
         style={{ gridTemplateColumns: "auto auto 1fr" }}
       >
-        <span className="h-2 w-2 inline-flex mr-1 shrink-0 rounded-full bg-red-500 self-center"></span>
-        <div className={cn("flex items-center justify-center", showFlag ? "min-w-[17px]" : "min-w-0")}>
-          {showFlag ? <VSWServerFlag country_code={country_code} /> : null}
-        </div>
         <div className="relative flex flex-col">
-          <p className={cn("break-all font-bold tracking-tight max-w-[108px]", showFlag ? "text-xs" : "text-sm")}>{name}</p>
+          <p className={cn("break-all font-bold tracking-tight max-w-[108px]", showFlag ? "text-xs" : "text-sm")}>
+            <span className="h-2 w-2 inline-flex mr-1 shrink-0 rounded-full bg-red-500 self-center"></span>
+            {showFlag ? <VSWServerFlag country_code={country_code} /> : null}
+            {name}
+          </p>
           <div className="hidden lg:block">{parsedData?.billingDataMod && <VSWBillingInfo parsedData={parsedData} />}</div>
         </div>
       </section>
