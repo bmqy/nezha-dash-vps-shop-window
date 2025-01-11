@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react-swc"
 import { execSync } from "child_process"
 import path from "path"
-import { defineConfig, loadEnv } from "vite"
+import { defineConfig } from "vite"
 
 // Get git commit hash
 const getGitHash = () => {
@@ -15,7 +15,6 @@ const getGitHash = () => {
 
 // https://vite.dev/config/
 export default defineConfig(({mode})=>{
-  const env = loadEnv(mode, process.cwd(), '')
   const isSSL = env.VITE_NEZHA_DASHBOARD_ENABLE_SSL === "true";
   return {
     base: "/",
@@ -31,13 +30,13 @@ export default defineConfig(({mode})=>{
     server: {
       proxy: {
         "/api/v1/ws/server": {
-          target: isSSL ? `wss://${env.VITE_NEZHA_DASHBOARD_DOMAIN}` : `ws://${env.VITE_NEZHA_DASHBOARD_DOMAIN}`,
+          target: isSSL ? `wss://${process.env.VITE_NEZHA_DASHBOARD_DOMAIN}` : `ws://${process.env.VITE_NEZHA_DASHBOARD_DOMAIN}`,
           changeOrigin: true,
           rewriteWsOrigin: true,
           ws: true,
         },
         "/api/v1/": {
-          target: isSSL ? `https://${env.VITE_NEZHA_DASHBOARD_DOMAIN}` : `http://${env.VITE_NEZHA_DASHBOARD_DOMAIN}`,
+          target: isSSL ? `https://${process.env.VITE_NEZHA_DASHBOARD_DOMAIN}` : `http://${process.env.VITE_NEZHA_DASHBOARD_DOMAIN}`,
           changeOrigin: true,
         },
       },
