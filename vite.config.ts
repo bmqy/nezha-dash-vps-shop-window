@@ -14,7 +14,7 @@ const getGitHash = () => {
 }
 
 // https://vite.dev/config/
-export default defineConfig(({mode})=>{
+export default defineConfig(()=>{
   const isSSL = process.env.VITE_NEZHA_DASHBOARD_ENABLE_SSL === "true";
   return {
     base: "/",
