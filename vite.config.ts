@@ -15,7 +15,8 @@ const getGitHash = () => {
 
 // https://vite.dev/config/
 export default defineConfig(()=>{
-  const isSSL = process.env.VITE_NEZHA_DASHBOARD_ENABLE_SSL === "true";
+  const isSSL = JSON.stringify(process.env.VITE_NEZHA_DASHBOARD_ENABLE_SSL) === "true";
+  const domain = JSON.stringify(process.env.VITE_NEZHA_DASHBOARD_DOMAIN);
   return {
     base: "/",
     define: {
@@ -30,13 +31,13 @@ export default defineConfig(()=>{
     server: {
       proxy: {
         "/api/v1/ws/server": {
-          target: isSSL ? `wss://${process.env.VITE_NEZHA_DASHBOARD_DOMAIN}` : `ws://${process.env.VITE_NEZHA_DASHBOARD_DOMAIN}`,
+          target: isSSL ? `wss://${domain}` : `ws://${domain}`,
           changeOrigin: true,
           rewriteWsOrigin: true,
           ws: true,
         },
         "/api/v1/": {
-          target: isSSL ? `https://${process.env.VITE_NEZHA_DASHBOARD_DOMAIN}` : `http://${process.env.VITE_NEZHA_DASHBOARD_DOMAIN}`,
+          target: isSSL ? `https://${domain}` : `http://${domain}`,
           changeOrigin: true,
         },
       },
