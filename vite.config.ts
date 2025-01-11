@@ -15,7 +15,7 @@ const getGitHash = () => {
 
 // https://vite.dev/config/
 export default defineConfig(()=>{
-  const isSSL = JSON.stringify(process.env.VITE_NEZHA_DASHBOARD_ENABLE_SSL) === "true";
+  const isSSL = process.env.VITE_NEZHA_DASHBOARD_ENABLE_SSL === "true";
   const domain = JSON.stringify(process.env.VITE_NEZHA_DASHBOARD_DOMAIN);
   console.log(isSSL, typeof process.env.VITE_NEZHA_DASHBOARD_ENABLE_SSL, domain);
   return {
