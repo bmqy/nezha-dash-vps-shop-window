@@ -17,7 +17,7 @@ const getGitHash = () => {
 export default defineConfig(()=>{
   const isSSL = JSON.stringify(process.env.VITE_NEZHA_DASHBOARD_ENABLE_SSL) === "true";
   const domain = JSON.stringify(process.env.VITE_NEZHA_DASHBOARD_DOMAIN);
-  console.log(isSSL, domain);
+  console.log(isSSL, process.env.VITE_NEZHA_DASHBOARD_ENABLE_SSL, domain);
   return {
     base: "/",
     define: {
