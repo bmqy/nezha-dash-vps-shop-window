@@ -116,7 +116,7 @@ export default function ServerCardInline({ now, serverInfo }: { now: number; ser
   ) : (
     <Card
       className={cn(
-        "flex  min-h-[61px] min-w-[900px] items-center justify-start p-3 md:px-5 flex-row cursor-pointer hover:bg-accent/50 transition-colors dark:bg-stone-800 bg-stone-100",
+        "flex  min-h-[61px] min-w-[900px] items-center justify-start gap-3 p-3 md:px-5 flex-row cursor-pointer hover:bg-accent/50 transition-colors dark:bg-stone-800 bg-stone-100",
         {
           "bg-card/70": customBackgroundImage,
         },
