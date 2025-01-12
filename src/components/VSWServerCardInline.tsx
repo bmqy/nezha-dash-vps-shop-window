@@ -123,7 +123,7 @@ export default function ServerCardInline({ now, serverInfo }: { now: number; ser
       )}
       onClick={() => navigate(`/server/${serverInfo.id}`)}
     >
-      <section className={cn("grid items-center gap-2 w-36")} style={{ gridTemplateColumns: "auto auto 1fr" }}>
+      <section className={cn("grid items-center gap-2 w-36")}>
         <div className="relative flex flex-col">
           <p className={cn("break-all font-bold w-32 tracking-tight", showFlag ? "text-xs" : "text-sm")}>
             <span className="h-2 w-2 inline-flex mr-1 shrink-0 rounded-full bg-red-500 self-center"></span>
