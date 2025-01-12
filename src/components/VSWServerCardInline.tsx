@@ -133,7 +133,7 @@ export default function ServerCardInline({ now, serverInfo }: { now: number; ser
           {parsedData?.billingDataMod && <VSWBillingInfo parsedData={parsedData} />}
         </div>
       </section>
-      <Separator orientation="vertical" className="h-8 ml-3 lg:ml-1 mr-3" />
+      <Separator orientation="vertical" className="h-8 ml-2 mx-0" />
       {parsedData?.planDataMod && <PlanInfo parsedData={parsedData} />}
     </Card>
   )
